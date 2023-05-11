@@ -12,4 +12,5 @@ jobs:
     - name: Setup Gradle
       uses: gradle/gradle-build-action@v2
     - name: Run build with Gradle Wrapper
-      run: cd spring-petclinic-api-gateway;./gradlew bootBuildImage spring-petclinic-api-gateway
+      run: ./gradlew bootBuildImage  --imageName spring-petclinic-api-gateway:${{ github.sha }}
+      working-directory: ./spring-petclinic-api-gateway
