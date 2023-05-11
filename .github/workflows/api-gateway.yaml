@@ -25,9 +25,8 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-
-      - name: Deploy :latest
-        if: success()
-        uses: actions-hub/docker@master
+      - name: Push Image
+        uses: docker/build-push-action@v4
         with:
-          args: push ${{ secrets.DOCKERHUB_USERNAME }}/spring-petclinic-api-gateway:${{ github.sha }}
+          push: true
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/spring-petclinic-api-gateway:${{ github.sha }}
