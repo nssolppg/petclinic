@@ -30,4 +30,4 @@ jobs:
         if: success()
         uses: actions-hub/docker@master
         with:
-          args: push ${{username}}/spring-petclinic-api-gateway:${{ github.sha }}
+          args: push ${{ secrets.DOCKERHUB_USERNAME }}/spring-petclinic-api-gateway:${{ github.sha }}
