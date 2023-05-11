@@ -1,2 +1,2 @@
 # spring-petclinic-api-gateway
-abc
+ab
