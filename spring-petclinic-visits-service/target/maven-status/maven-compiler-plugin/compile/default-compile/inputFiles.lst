@@ -1,0 +1,5 @@
+/home/yasuhisa/Repository/spring-petclinic-microservices/spring-petclinic-visits-service/app/main/java/org/springframework/samples/petclinic/visits/VisitsServiceApplication.java
+/home/yasuhisa/Repository/spring-petclinic-microservices/spring-petclinic-visits-service/app/main/java/org/springframework/samples/petclinic/visits/web/VisitResource.java
+/home/yasuhisa/Repository/spring-petclinic-microservices/spring-petclinic-visits-service/app/main/java/org/springframework/samples/petclinic/visits/config/MetricConfig.java
+/home/yasuhisa/Repository/spring-petclinic-microservices/spring-petclinic-visits-service/app/main/java/org/springframework/samples/petclinic/visits/model/Visit.java
+/home/yasuhisa/Repository/spring-petclinic-microservices/spring-petclinic-visits-service/app/main/java/org/springframework/samples/petclinic/visits/model/VisitRepository.java
