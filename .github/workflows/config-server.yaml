@@ -1,8 +1,8 @@
-name: Build Gradle project (spring-petclinic-api-gateway)
+name: Build Gradle project (spring-petclinic-config-server)
 on:
   push:
     paths:
-      - spring-petclinic-api-gateway/**
+      - spring-petclinic-config-server/**
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -24,12 +24,12 @@ jobs:
       - name: Build with Gradle
         uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
         with:
-          build-root-directory: spring-petclinic-api-gateway
-          arguments: bootBuildImage  --imageName ${{ secrets.DOCKERHUB_USERNAME }}/spring-petclinic-api-gateway:${{ github.sha }}
+          build-root-directory: spring-petclinic-config-server
+          arguments: bootBuildImage  --imageName ${{ secrets.DOCKERHUB_USERNAME }}/spring-petclinic-config-server:${{ github.sha }}
 
       - name: Push to docker hub
         if: success()
         uses: actions-hub/docker@master
         with:
-          args: push ${{ secrets.DOCKERHUB_USERNAME }}/spring-petclinic-api-gateway:${{ github.sha }}
+          args: push ${{ secrets.DOCKERHUB_USERNAME }}/spring-petclinic-config-server:${{ github.sha }}
 
