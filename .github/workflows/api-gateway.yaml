@@ -13,24 +13,24 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
+      - name: Login to docker hub
+        uses: actions-hub/docker/login@master
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKERHUB_TOKEN }}
+
       - name: Validate Gradle wrapper
         uses: gradle/wrapper-validation-action@ccb4328a959376b642e027874838f60f8e596de3
       - name: Build with Gradle
         uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
         with:
           build-root-directory: spring-petclinic-api-gateway
-          arguments: bootBuildImage  --imageName spring-petclinic-api-gateway:${{ github.sha }}
+          arguments: bootBuildImage  --imageName ${{ secrets.DOCKERHUB_USERNAME }}/spring-petclinic-api-gateway:${{ github.sha }}
       # - name: Login to Docker Hub
       #   uses: docker/login-action@v2
       #   with:
       #     username: ${{ secrets.DOCKERHUB_USERNAME }}
       #     password: ${{ secrets.DOCKERHUB_TOKEN }}
-
-      - name: Login to docker hub
-        uses: actions-hub/docker/login@master
-        env:
-          DOCKER_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
-          DOCKER_PASSWORD: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Push to docker hub
         if: success()
